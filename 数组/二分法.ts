@@ -12,7 +12,7 @@ function fn(nums: Array<number>, target: any): number {
 // console.log("-----", fn(nums, target));
 
 // 二分法
-
+// [a,b]
 function search(nums: number[], target: number) {
   let mid: number,
     left: number = 0,
@@ -31,4 +31,23 @@ function search(nums: number[], target: number) {
   return -1;
 }
 
-console.log("---打印", search(nums, target));
+// console.log("---打印", search(nums, target));
+
+// [a,b)
+function search2(nums: number[], target: number) {
+  let mid: number,
+    left: number = 0,
+    right: number = nums.length;
+  while (left < right) {
+    mid = left + ((right - left) >> 1);
+    if (nums[mid] > target) {
+      right = mid;
+    } else if (nums[mid] < target) {
+      left = mid + 1;
+    } else {
+      return mid;
+    }
+  }
+
+  return -1;
+}
